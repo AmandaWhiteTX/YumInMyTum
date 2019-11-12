@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- firebase libs -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+    <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'/>
     <title>Food Selector</title>
 </head>
+
 <body>
-    
+
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Yum In My Tum</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" id="searchNavItem">
+                        <a class="nav-link" href="food_selector_page.html" id="searchNavItemLink">Select Food</a>
+                    </li>
+                    <li class="nav-item" id="chartsNavItem">
+                        <a class="nav-link" href="charts_page.html" id="chartsNavItemLink">Progress Charts</a>
+                    </li>
+                    <li class="nav-item" id="signOutNavItem">
+                        <a class="nav-link" href="index.html" id="signOutButton">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row mt-5">
+            <div class="col">
+                <div id="searchContainer">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <div id="searchBarDiv">
+                                <input type="text" class="form-control" id="searchBarInput"
+                                    placeholder="search for ...">
+                            </div>
+                        </div>
+                        <div class="col-3">
+
+                            <button type="button" class="btn btn-primary form-control" id="searchButton">Search</button>
+
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+
+                    <div id="searchResults" class="mt-3 mb-5">
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Items
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th>Item Name</th>
+                                            <th>Calories</th>
+                                            <th>Fat</th>
+                                            <th>Add to a Meal</th>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+    <script src="assets/js/database-config.js"></script>
+    <script src="assets/js/common-functions.js"></script>
+    <script src="assets/js/logout.js"></script>
+    <script src="assets/js/food-selector.js"></script>
+
 </body>
+
 </html>
