@@ -1,12 +1,12 @@
 var firebaseConfig = {
-  apiKey: "AIzaSyD8D96eRHqq7vqvZy76jspJPPVIvjbMY_0",
-  authDomain: "yuminmytum-fb9b9.firebaseapp.com",
-  databaseURL: "https://yuminmytum-fb9b9.firebaseio.com",
-  projectId: "yuminmytum-fb9b9",
-  storageBucket: "yuminmytum-fb9b9.appspot.com",
-  messagingSenderId: "170412031845",
-  appId: "1:170412031845:web:3ca950d6602795d4b3eb8c"
-};
+    apiKey: "AIzaSyApR00dSuRk1CYY-z6lTMbVWIOWDK-772c",
+    authDomain: "yuminmytum-3f4ac.firebaseapp.com",
+    databaseURL: "https://yuminmytum-3f4ac.firebaseio.com",
+    projectId: "yuminmytum-3f4ac",
+    storageBucket: "yuminmytum-3f4ac.appspot.com",
+    messagingSenderId: "793639308573",
+    appId: "1:793639308573:web:8821c709a71de2e144e5f4"
+  };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
