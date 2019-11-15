@@ -23,14 +23,14 @@ $("#searchButton").on("click", function () {
         //connect to the api and display the result
         $("tbody").empty();
         var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://nutritionix-api.p.rapidapi.com/v1_1/search/cheddar%20cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
-		"x-rapidapi-key": "d8bcc0693fmsh5ee10f682031db1p184a8ejsn8311d672f81d"
-	}
+    "async": true,
+    "crossDomain": true,
+    "url": "https://nutritionix-api.p.rapidapi.com/v1_1/search/cheddar%20cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat",
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
+        "x-rapidapi-key": "5aae5d0399mshdedf5a1c0e88874p1a723cjsna32e355bd5ad"
+    }
 }
 
         $.ajax(settings).done(function (response) {
