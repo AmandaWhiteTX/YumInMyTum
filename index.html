@@ -14,7 +14,24 @@
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
+<style>
+.footerContainer{
+	background-color: #666666;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 65px;
+	position: absolute;
+	width: 100%;
+}
 
+.footerContainer p{
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+</style>
 </head>
 
 <body background="assets/images/background.jpg">
@@ -78,6 +95,10 @@
       </div>
 
   </div>
+
+  <footer class="footerContainer bg-light">
+		<p>Powered by <a href="https://www.nutritionix.com/business/api" target="_blank">Nutritionix API</a></p>
+	</footer>
 
   <!-- login modal -->
   <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

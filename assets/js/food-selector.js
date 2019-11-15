@@ -20,19 +20,37 @@ $("#searchButton").on("click", function () {
 
         var searchBarInputVar = $("#searchBarInput").val().trim();
         searchBarInputVar = searchBarInputVar.replace(" ", "%20");
-        var url = "https://nutritionix-api.p.rapidapi.com/v1_1/search/" + searchBarInputVar + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat";
-        //connect to the api and display the result
         $("tbody").empty();
+        /* var url = "https://nutritionix-api.p.rapidapi.com/v1_1/search/" + searchBarInputVar + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat"; */
+        //connect to the api and display the result
+        /*        var settings = {
+           "async": true,
+           "crossDomain": true,
+           "url": url,
+           "method": "GET",
+           "headers": {
+               "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
+               "x-rapidapi-key": "5aae5d0399mshdedf5a1c0e88874p1a723cjsna32e355bd5ad"
+           }
+       } */
+
+
+        var appId = "19449d59";
+        var appKey = "82f30745c0156ab7903a78cceec1ccf2";
+        var url = "https://api.nutritionix.com/v1_1/search/" + searchBarInputVar + "?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id%2Cnf_calories%2Cnf_total_fat&appId=" + appId + "&appKey=" + appKey;
+
         var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": url,
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
-        "x-rapidapi-key": "5aae5d0399mshdedf5a1c0e88874p1a723cjsna32e355bd5ad"
-    }
-}
+            "async": true,
+            "crossDomain": true,
+            "url": url,
+            "method": "GET",
+            "headers": {
+                "content-type": "application / json",
+                "accept": "application / json",
+                "x-app-id": appId,
+                "x-app-key": appKey,
+            }
+        }
 
         $.ajax(settings).done(function (response) {
             $("#ddlMenu").empty();
