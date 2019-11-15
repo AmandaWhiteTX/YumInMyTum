@@ -28,16 +28,14 @@ $("#enterWeightButton").on("click", function (event) {
 
         database.collection('usersLoginTokens').where('tokenId', '==', localStorage.getItem("tokenId")).get().then(function (querySnapshot) {
             return database.collection('usersLoginTokens').doc(querySnapshot.docs[0].id).get().then(function (doc) {
-                console.log(doc.data());
                 //then will not be executed until the delete returns a response
-                var userIdByToken = doc.data().userId;
-                console.log(userIdByToken);
-
+                var userIdByToken = doc.data().userId;				
+				
                 return database.collection('users').where('userId', '==', userIdByToken).get().then(function (querySnapshot) {
                     database.collection('userWeight').add({
                         userId: userIdByToken,
                         weightEntry: weightEntryVar,
-                        bmi: (parseFloat(weightEntryVar) / Math.pow((parseFloat(querySnapshot.docs[0].data().ht) / 100), 2)).toFixed(2),
+                        bmi: (parseFloat(weightEntryVar) / Math.pow((parseFloat(querySnapshot.docs[0].data().userHeight) / 100), 2)).toFixed(2),
                         creationDate: moment(creationDate, "MM/DD/YYYY").unix()
                     });
                 });

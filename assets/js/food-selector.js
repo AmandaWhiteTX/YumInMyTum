@@ -20,12 +20,13 @@ $("#searchButton").on("click", function () {
 
         var searchBarInputVar = $("#searchBarInput").val().trim();
         searchBarInputVar = searchBarInputVar.replace(" ", "%20");
+        var url = "https://nutritionix-api.p.rapidapi.com/v1_1/search/" + searchBarInputVar + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat";
         //connect to the api and display the result
         $("tbody").empty();
         var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://nutritionix-api.p.rapidapi.com/v1_1/search/cheddar%20cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat",
+    "url": url,
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
