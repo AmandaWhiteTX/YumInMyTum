@@ -1,22 +1,28 @@
-.navbar-brand{
+.navbar-brand {
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     background-color: #c0d2f0;
 }
 
-.navbar{
+.navbar {
     line-height: 50px;
     padding-top: 0;
     padding-bottom: 0;
 }
 
-.active-element{
+.active-element {
     background-color: #c0d2f0;
 }
 
-#headingOne:hover{
+#headingOne:hover {
     background-color: #c0d2f0;
     cursor: pointer;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
