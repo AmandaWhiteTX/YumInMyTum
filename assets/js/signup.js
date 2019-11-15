@@ -89,17 +89,26 @@ $("#signUpButton").on("click", function (event) {
     if (errorsArray.length != 0) {
         displayErrorsAlert(errorsArray);
     } else {
-        return database.collection('users').add({
-            userId: signUpEmailVar,
-            password: signUpPasswordVar,
-            userHeight: signUpHeightVar,
-            country: $('#selected').text(),
-            creationDate: moment().format("MM/DD/YYYY")
-        }).then(function () {
-            $("#signupEmailInput").val("");
-            $("#signUpPasswordInput").val("");
-            $("#signUpHeightInput").val("");
-            $('#signupmodal').modal('hide');
+
+        database.collection('users').where('userId', '==', signUpEmailVar).get().then(function (querySnapshot) {
+            //console.log(querySnapshot);
+            if(querySnapshot.docs.length > 0){
+                errorsArray.push("User with the same email address already exists!");
+                displayErrorsAlert(errorsArray);
+            } else{
+                return database.collection('users').add({
+                    userId: signUpEmailVar,
+                    password: signUpPasswordVar,
+                    userHeight: signUpHeightVar,
+                    country: $('#selected').text(),
+                    creationDate: moment().format("MM/DD/YYYY")
+                }).then(function () {
+                    $("#signupEmailInput").val("");
+                    $("#signUpPasswordInput").val("");
+                    $("#signUpHeightInput").val("");
+                    $('#signupmodal').modal('hide');
+                });
+            }
         });
 
     }
