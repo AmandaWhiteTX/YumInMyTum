@@ -38,32 +38,28 @@ $("#loginButton").on("click", function (event) {
 
 
                     database.collection('usersLoginTokens').where('userId', '==', loginEmailVar).get().then(function (doc) {
-                        if (doc.docs.length == 0) {
-                            database.collection('usersLoginTokens').add({
-                                userId: loginEmailVar,
-                                tokenId: localStorage.getItem("tokenId")
-                            });
-                        } else {
+                        
+                        database.collection('usersLoginTokens').add({
+                            userId: loginEmailVar,
+                            tokenId: localStorage.getItem("tokenId"),
+                            creationDate: moment().format("MM/DD/YYYY HH:mm:ss")
+                        }).then(function () {
+                            $('#signInModal').modal('hide');
+                            window.location.href = "food_selector_page.html";
+                        }).catch(function (error) {
+                            console.error("Error!", error);
+                        });
 
-                            //database.collection('usersLoginTokens').doc(doc.docs[0].id).delete();
-
-                            database.collection('usersLoginTokens').add({
-                                userId: loginEmailVar,
-                                tokenId: localStorage.getItem("tokenId"),
-                                creationDate: moment().format("MM/DD/YYYY HH:mm:ss")
-                            }).then(function () {
-                                $('#signInModal').modal('hide');
-                                window.location.href = "food_selector_page.html";
-                            }).catch(function (error) {
-                                console.error("Error!", error);
-                            });
-                        }
                     });
 
                 } else {
+                    errorsArray.push("Incorrect password!");
+                    displayErrorsAlert(errorsArray);
                     console.log("user exists. wrong password!");
                 }
             } else {
+                errorsArray.push("User email address does not exist. Use signup button to create an account!");
+                displayErrorsAlert(errorsArray);
                 console.log("user doesnt exist popover. signup!");
             }
 
