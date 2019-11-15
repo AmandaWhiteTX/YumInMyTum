@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon' />
+    <title>Yum In My Tum</title>
+</head>
+
+<body background="assets/images/background.jpg">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Yum In My Tum</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" id="searchNavItem">
+                    <a class="nav-link" href="food_selector_page.html" id="searchNavItemLink">Select
+                        Food</a>
+                </li>
+                <li class="nav-item" id="chartsNavItem">
+                    <a class="nav-link" href="charts_page.html" id="chartsNavItemLink">Progress Charts</a>
+                </li>
+                <li class="nav-item" id="WeightNavItem">
+                    <a class="nav-link" href="weight_entry_page.html" id="weightNavItemLink">Enter Weight</a>
+                </li>
+                <li class="nav-item" id="ChartNavItem">
+                    <a class="nav-link active-element" href="meals_report_page.html" id="mealsNavItemLink">Meals
+                        Report</a>
+                </li>
+                <li class="nav-item" id="signOutNavItem">
+                    <a class="nav-link" href="index.html" id="signOutButton">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col bg-light p-5">
+                <div id="searchContainer">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <div id="searchBarDiv">
+                                <input class="form-control mr-sm-2" id="logDate" type="search"
+                                    placeholder="Food Log Date" aria-label="Search">
+                            </div>
+                        </div>
+                        <div class="col-3">
+
+                            <button class="btn btn-outline-success my-2 my-sm-0 form-control" id="chooseLogDate" type="submit">Show Results</button>
+
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+
+                    <div id="searchResults" class="mt-3 mb-5">
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                    <a data-toggle="collapse" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                
+                                            <h4 class="mb-0 py-1 mt-1">
+                                                Your Food Log
+                                            </h4>
+                                          </a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <table id="foodLogTable" class="table table-striped">
+                                        <thead>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Food Selection</th>
+                                            <th scope="col">Meal</th>
+                                            <th scope="col">Calories</th>
+                                            <th scope="col">Fat</th>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+
+    <script src="assets/js/database-config.js"></script>
+    <script src="assets/js/common-functions.js"></script>
+    <script src="assets/js/logout.js"></script>
+    <script src="assets/js/food-log.js"></script>
+</body>
+
+</html>
