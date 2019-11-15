@@ -13,38 +13,45 @@
     <!-- firebase libs -->
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-
-    <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'/>
-    <title>Food Selector</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon' />
+    <title>Yum In My Tum</title>
 </head>
 
-<body>
+<body background="assets/images/background.jpg">
 
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Yum In My Tum</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" id="searchNavItem">
+                    <a class="nav-link active-element" href="food_selector_page.html" id="searchNavItemLink">Select Food</a>
+                </li>
+                <li class="nav-item" id="chartsNavItem">
+                    <a class="nav-link" href="charts_page.html" id="chartsNavItemLink">Progress Charts</a>
+                </li>
+                <li class="nav-item" id="WeightNavItem">
+                    <a class="nav-link" href="weight_entry_page.html" id="weightNavItemLink">Enter Weight</a>
+                </li>
+                <li class="nav-item" id="ChartNavItem">
+                    <a class="nav-link" href="meals_report_page.html" id="mealsNavItemLink">Meals Report</a>
+                </li>
+                <li class="nav-item" id="signOutNavItem">
+                    <a class="nav-link" href="index.html" id="signOutButton">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Yum In My Tum</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item" id="searchNavItem">
-                        <a class="nav-link" href="food_selector_page.html" id="searchNavItemLink">Select Food</a>
-                    </li>
-                    <li class="nav-item" id="chartsNavItem">
-                        <a class="nav-link" href="charts_page.html" id="chartsNavItemLink">Progress Charts</a>
-                    </li>
-                    <li class="nav-item" id="signOutNavItem">
-                        <a class="nav-link" href="index.html" id="signOutButton">Sign Out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
         <div class="row mt-5">
-            <div class="col">
+            <div class="col bg-light p-5">
                 <div id="searchContainer">
                     <div class="row">
                         <div class="col-3"></div>
@@ -56,7 +63,8 @@
                         </div>
                         <div class="col-3">
 
-                            <button type="button" class="btn btn-primary form-control" id="searchButton">Search</button>
+                            <button type="button" class="btn btn-outline-success form-control"
+                                id="searchButton">Search</button>
 
                         </div>
                         <div class="col-3"></div>
@@ -66,12 +74,12 @@
 
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <h2>
-                                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Items
-                                    </button>
-                                </h2>
+                                    <a data-toggle="collapse" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                
+                                            <h4 class="mb-0 py-1 mt-1">
+                                                Select Your Food
+                                            </h4>
+                                          </a>
                             </div>
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
                                 <div class="card-body">

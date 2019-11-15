@@ -1,32 +1,52 @@
 $("#searchButton").on("click", function () {
     event.preventDefault();
-    var searchBarInputVar = $("#searchBarInput").val().trim();
-    searchBarInputVar = searchBarInputVar.replace(" ", "%20");
-    //connect to the api and display the result
-    $("tbody").empty();
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://nutritionix-api.p.rapidapi.com/v1_1/search/" + searchBarInputVar + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat",
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
-            "x-rapidapi-key": "c7d15b6fbamsh632fd5afc28a272p165c78jsn8f52b8a67f8e"
+    var errorsArray = [];
+
+    if (localStorage.getItem("tokenId") != null && localStorage.getItem("tokenId") != "") {
+        if ($("#searchBarInput").val() == "") {
+            errorsArray.push("Food field is required.");
+            $("#searchBarInput").addClass("is-invalid");
+        } else {
+            $("#searchBarInput").removeClass("is-invalid");
         }
+    } else {
+        errorsArray.push("You are not authorized to perform this action.");
     }
 
-    $.ajax(settings).done(function (response) {
-        $("#ddlMenu").empty();
-        var barDataArray = [];
-        var xDataArray = [];
-        for (let i = 0; i < response.hits.length; i++) {
-            xDataArray.push(response.hits[i].fields.item_name);
-            barDataArray.push(response.hits[i].fields.nf_calories);
-            renderRecord(response.hits[i].fields.item_name, response.hits[i].fields.nf_calories, response.hits[i].fields.nf_total_fat);
-        }
-    });
+    if (errorsArray.length != 0) {
+        displayErrorsAlert(errorsArray);
+    }
+    else {
 
+        var searchBarInputVar = $("#searchBarInput").val().trim();
+        searchBarInputVar = searchBarInputVar.replace(" ", "%20");
+        //connect to the api and display the result
+        $("tbody").empty();
+        var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://nutritionix-api.p.rapidapi.com/v1_1/search/cheddar%20cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
+		"x-rapidapi-key": "d8bcc0693fmsh5ee10f682031db1p184a8ejsn8311d672f81d"
+	}
+}
+
+        $.ajax(settings).done(function (response) {
+            $("#ddlMenu").empty();
+            var barDataArray = [];
+            var xDataArray = [];
+            for (let i = 0; i < response.hits.length; i++) {
+                xDataArray.push(response.hits[i].fields.item_name);
+                barDataArray.push(response.hits[i].fields.nf_calories);
+                renderRecord(response.hits[i].fields.item_name, response.hits[i].fields.nf_calories, response.hits[i].fields.nf_total_fat);
+            }
+        });
+    }
 });
+
+
 
 function renderRecord(x, y, z) {
     var trElement = $("<tr>");
@@ -58,7 +78,7 @@ function renderRecord(x, y, z) {
     selectOptionFour.text("Snack");
     selectOptionFour.attr("value", "S");
     selectElement.attr("style", "width:150px;");
-    selectElement.addClass("btn btn-primary add-buttons mr-2");
+    selectElement.addClass("btn btn-success add-buttons mr-2 form-control");
     selectElement.attr("id", "addButton" + uuid());
     selectElement.append(selectOptionOne, selectOptionTwo, selectOptionThree, selectOptionFour);
     tdFourElement.append(selectElement);
@@ -100,8 +120,8 @@ $("body").on("focusout", ".add-buttons", function (event) {
                 calCount: calCount,
                 fatCount: fatCount,
                 meType: selectValue,
-                creationDate: moment(creationDate,"MM/DD/YYYY").unix()
+                creationDate: moment(creationDate, "MM/DD/YYYY").unix()
             });
         });
-    });    
+    });
 });
